@@ -75,7 +75,6 @@ export default function ProfilePage() {
     );
   }
 
-  // ⬇️ YOUR ORIGINAL UI STARTS HERE (UNCHANGED)
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
