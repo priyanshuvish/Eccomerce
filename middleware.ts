@@ -5,25 +5,19 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
   const { pathname } = request.nextUrl;
 
-  // Public paths that don't require authentication
+  // Public routes
   const publicPaths = [
     "/login",
     "/register",
     "/forgot-password",
-    // "/", 
-    // "/products",
-    // "/category",
-    // "/search",
   ];
 
-  // Check if the current path starts with any public path
-  const isPublicPath = publicPaths.some(path => 
-    pathname === path || pathname.startsWith(`${path}/`)
+  const isPublicPath = publicPaths.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`)
   );
 
-  // Allow public paths and static files
+  // Allow static files
   if (
-    isPublicPath ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon.ico") ||
     pathname.includes(".")
@@ -31,11 +25,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // If no token and trying to access protected route, redirect to login
-  if (!token) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("callbackUrl", pathname);
-    return NextResponse.redirect(loginUrl);
+  // 🔥 If NO token and trying to access anything except public pages
+  if (!token && !isPublicPath) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // Optional: prevent logged-in user from seeing login
+  if (token && pathname === "/login") {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();

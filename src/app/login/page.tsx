@@ -191,8 +191,7 @@ export default function LoginPage() {
                                     required
                                     value={formData.username}
                                     onChange={handleChange}
-                                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="Enter your username"
+className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm text-black placeholder-gray-400 focus:outline-none focus:ring-black focus:border-black"                                    placeholder="Enter your username"
                                 />
                             </div>
                         </div>
@@ -214,8 +213,7 @@ export default function LoginPage() {
                                     required
                                     value={formData.password}
                                     onChange={handleChange}
-                                    className="appearance-none block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="Enter your password"
+className="appearance-none block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm text-black placeholder-gray-400 focus:outline-none focus:ring-black focus:border-black"                                    placeholder="Enter your password"
                                 />
                                 <button
                                     type="button"
