@@ -80,7 +80,10 @@ export default function LoginPage() {
             // Store in localStorage if remember me is checked
             if (rememberMe) {
                 // Set cookie with proper options for middleware to read
-                document.cookie = `token=${response.accessToken}; path=/; max-age=604800; SameSite=Lax`; localStorage.setItem('refreshToken', response.refreshToken);
+                document.cookie = `token=${response.accessToken}; path=/; max-age=604800; SameSite=Lax`;
+                if (response.refreshToken) {
+                    localStorage.setItem("refreshToken", response.refreshToken);
+                }
                 localStorage.setItem('user', JSON.stringify({
                     id: response.id,
                     username: response.username,
