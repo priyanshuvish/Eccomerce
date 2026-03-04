@@ -10,10 +10,10 @@ export function middleware(request: NextRequest) {
     "/login",
     "/register",
     "/forgot-password",
-    "/", // Allow home page
-    "/products",
-    "/category",
-    "/search",
+    // "/", 
+    // "/products",
+    // "/category",
+    // "/search",
   ];
 
   // Check if the current path starts with any public path
