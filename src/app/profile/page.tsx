@@ -26,7 +26,6 @@ export default function ProfilePage() {
 
   const [activeTab, setActiveTab] = useState("profile");
 
-  // Redirect if no token
   useEffect(() => {
     if (!token) {
       router.push("/login");
